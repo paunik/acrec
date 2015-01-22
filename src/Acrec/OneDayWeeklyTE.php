@@ -35,6 +35,9 @@ class OneDayWeeklyTE extends TemporalExpression {
 	 * @param \DateTime $startdate
 	 * @param \DateTime $endDate
 	 * @param integer $occurences
+	 *
+	 * @return OneDayWeeklyTE
+	 * @TODO refactor move all factory methods to one parent class!!!
 	 */
 	public static function factory($startDate, $endDate=null, $occurences=null)
 	{

@@ -57,6 +57,7 @@ class CustomDaysWeeklyTE extends TemporalExpression {
 	 * @param \DateTime $endDate
 	 * @param integer $occurences
 	 *
+	 * @return CustomDaysWeeklyTE
 	 * @TODO refactor move all factory methods to one parent class!!!
 	 */
 	public static function factory($startDate, $days, $endDate=null, $occurences=null)
