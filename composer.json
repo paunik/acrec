@@ -1,0 +1,21 @@
+{
+    "name": "paunik/acrec",
+    "description": "Event recurring lib for Humanity developer position ",
+    "homepage": "https://github.com/paunik/acrec",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/paunik/acrec/issues",
+        "source": "https://github.com/paunik/acrec"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "ApplyColors\\Acrec\\": "src/Acrec"
+        }
+    }
+}
