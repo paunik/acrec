@@ -1,5 +1,7 @@
 <?php
+
 namespace ApplyColors\Acrec;
+
 /**
  * Event logic
  *

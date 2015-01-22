@@ -38,6 +38,7 @@ class DailyTE extends TemporalExpression {
 	 * @param integer $occurences
 	 *
 	 * @return DailyTE;
+	 * @TODO refactor move all factory methods to one parent class!!!
 	 */
 	public static function factory($startDate, $endDate=null, $occurences=null)
 	{
