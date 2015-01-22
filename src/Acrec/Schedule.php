@@ -55,9 +55,6 @@ class Schedule {
 		// dateEnd modify +1 day to include end date
 		$daterange = new \DatePeriod($dateStart, new \DateInterval($frequency), $dateEnd->modify('+1 day'));
 		foreach ($daterange as $dr) {
-
-			var_dump($dr);
-
 			foreach ($this->elements as $se) {
 				if($se->isOccuring($event, $dr))
 				{
