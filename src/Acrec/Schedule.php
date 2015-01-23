@@ -34,7 +34,7 @@ class Schedule {
 	 */
 	public function isOccuring($event, $date) {
 		foreach ($this->elements as $se) {
-			$se->isOccuring($event, $date);
+			return $se->isOccuring($event, $date);
 		}
 	}
 
