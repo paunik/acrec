@@ -33,10 +33,15 @@ $oneDayWeekly = OneDayWeeklyTE::factory(new DateTime("2014-1-6 13:00:00"), null,
 
 $se = new ScheduleElement($event, $oneDayWeekly);
 
-$schedule = new Schedule;
+$schedule = new Schedule();
 $schedule->addElements($se);
 
-$filter = $schedule->filter($event, new DateTime('2014-3-1'), new DateTime('2014-3-31'));
+$startDate1 = new DateTime('2014-3-1');
+$endDate1	= new DateTime('2014-3-15');
+
+$schedule->setDateRange(new DatePeriod($startDate1, new DateInterval('P1D'), $endDate1->modify("+1 day")));
+
+$filter = $schedule->filter($event);
 
 loopFilter($filter);
 
@@ -49,10 +54,15 @@ $daily = DailyTE::factory(new DateTime("2014-1-6 13:00:00"), new DateTime("2014-
 
 $se2 = new ScheduleElement($event2, $daily);
 
-$schedule2 = new Schedule;
+$startDate2 = new DateTime('2014-3-1');
+$endDate2	= new DateTime('2014-3-15');
+
+$schedule2 = new Schedule();
 $schedule2->addElements($se2);
 
-$filter2 = $schedule2->filter($event2, new DateTime('2014-3-1'), new DateTime('2014-3-31'));
+$schedule2->setDateRange(new DatePeriod($startDate2, new DateInterval('P1D'), $endDate2->modify("+1 day")));
+
+$filter2 = $schedule2->filter($event2);
 
 loopFilter($filter2);
 
@@ -65,10 +75,15 @@ $daysWeekly = CustomDaysWeeklyTE::factory(new DateTime("2014-1-6 13:00:00"), arr
 
 $se3 = new ScheduleElement($event3, $daysWeekly);
 
-$schedule3 = new Schedule;
+$startDate3 = new DateTime('2014-3-1');
+$endDate3	= new DateTime('2014-3-15');
+
+$schedule3 = new Schedule();
 $schedule3->addElements($se3);
 
-$filter3 = $schedule3->filter($event3, new DateTime('2014-3-1'), new DateTime('2014-3-15'));
+$schedule3->setDateRange(new DatePeriod($startDate3, new DateInterval('P1D'), $endDate3->modify("+1 day")));
+
+$filter3 = $schedule3->filter($event3);
 
 loopFilter($filter3);
 
