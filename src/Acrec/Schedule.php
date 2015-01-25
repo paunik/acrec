@@ -9,11 +9,21 @@ class Schedule {
 	 */
 	protected $elements;
 
+	/**
+	 * @var \DatePeriod $dateRange
+	 */
+	protected $dateRange;
+
 	public function addElements($se) {
 		if($se instanceof ScheduleElement)
 		{
 			$this->elements[] = $se;
 		}
+	}
+
+
+	public function getElements() {
+		return $this->elements;
 	}
 
 	/**
@@ -27,7 +37,18 @@ class Schedule {
 	}
 
 	/**
-	 * Checks if Event occurs on a Date
+	 * @return Array of days
+	 *
+	 * @param Event $event
+	 * @param \DatePeriod $datePeriod
+	 *
+	 */
+	public function dates($event, $datePeriod) {
+
+	}
+
+	/**
+	 * CHecks if Event occurs on a Date
 	 *
 	 * @param Event $event
 	 * @param \DateTime $date
@@ -38,23 +59,35 @@ class Schedule {
 		}
 	}
 
+		/**
+	 * @param \DatePeriod $dateRange
+	 */
+	public function setDateRange($dateRange) {
+		if($dateRange instanceof \DatePeriod)
+		{
+			$this->dateRange = $dateRange;
+		} else {
+			throw new \Exception("\$dateRange should be instance of DatePeriod");
+		}
+
+		return $this;
+	}
+
 	/**
 	 * Checks rangne for occurance of certain event
 	 *
 	 * @param Event $event
-	 * @param \DateTime $dateStart
-	 * @param \DateTime $dateEnd
-	 * @param \DateInterval string $frequency
+	 * @param \DatePeriod
+	 * @TODO Refactor
 	 * @return Array of dates for event
 	 */
-	public function filter($event, $dateStart, $dateEnd, $frequency = "P1D")
+	public function filter($event)
 	{
 		$resultSet = array();
 		$resultSet['event'] = $event;
 		$resultSet['dates'] = array();
-		// dateEnd modify +1 day to include end date
-		$daterange = new \DatePeriod($dateStart, new \DateInterval($frequency), $dateEnd->modify('+1 day'));
-		foreach ($daterange as $dr) {
+
+		foreach ($this->dateRange as $dr) {
 			foreach ($this->elements as $se) {
 				if($se->isOccuring($event, $dr))
 				{
